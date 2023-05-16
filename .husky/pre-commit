@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "hello world"
-npm test
-echo this is an example
-npm test
-npm test
+echo "sdfghjklöf,dmkzm world"
+npm run lint
