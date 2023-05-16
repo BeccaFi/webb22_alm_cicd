@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "sdfghjklöf,dmkzm world"
+npm test
 npm run lint
