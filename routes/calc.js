@@ -1,27 +1,14 @@
 const express = require('express');
+const calcAddCon = require('../controllers/calcAddController');
+const calcSubCon = require('../controllers/calcSubController');
+const calcMultCon = require('../controllers/calcMultController');
+const calcDivCon = require('../controllers/calcDivController');
 
-const router = express.Router();
+const calcRouter = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('testing');
-});
+calcRouter.get('/add', calcAddCon);
+calcRouter.get('/sub', calcSubCon);
+calcRouter.get('/mult', calcMultCon);
+calcRouter.get('/div', calcDivCon);
 
-router.get('/add', (req, res) => {
-  const val1 = Number(req.query.val1);
-  const val2 = Number(req.query.val2);
-  const result = val1 + val2;
-  res.send(`${val1} + ${val2} = ${result}`);
-});
-
-class Calculator {
-  constructor() {
-    this.result = 0;
-  }
-
-  getResult() {
-    return this.result;
-  }
-}
-
-module.exports = { Calculator };
-module.exports = router;
+module.exports = calcRouter;
