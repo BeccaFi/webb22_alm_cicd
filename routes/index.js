@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Pandamonium' });
+  res.status(200).render('index', { title: 'Pandamonium' });
 });
 
 module.exports = router;
