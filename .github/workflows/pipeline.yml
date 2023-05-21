@@ -21,6 +21,17 @@ jobs:
       - name: Run mocha unit tests
         run: npm run test
         
+  supertest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run supertest
+        run: npm run supertest
+        
   run_eslint:
     runs-on: ubuntu-latest
     steps:
