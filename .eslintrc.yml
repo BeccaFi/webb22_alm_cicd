@@ -15,5 +15,9 @@ overrides:
 parserOptions:
   ecmaVersion: latest
 rules: {
- 'no-unused-vars': ['error', { argsIgnorePattern: 'next' }]
+ 'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
+ "mocha/max-top-level-suites": ["warn", {limit: 2}],
+ "import/no-extraneous-dependencies": ["error", {"devDependencies": true}], # Otherwise got the "supertest should be listed in project dependencies, not devDependencies"
+ prefer-arrow-callback: off,
+ func-names: off
 }
