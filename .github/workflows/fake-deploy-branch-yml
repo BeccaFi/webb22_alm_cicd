@@ -1,0 +1,19 @@
+on:
+  push:
+    branches-ignore:
+      - main
+      
+jobs:
+  fake_deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v3
+      
+      - name: install dependencies
+        run: npm ci
+        
+      - name: Print out "now deploying branch...."
+      - uses: nelonoel/branch-name@v1.0.1
+        run: echo "Now deploying branch: ${BRANCH_NAME} to the test server"
