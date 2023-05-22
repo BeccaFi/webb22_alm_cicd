@@ -21,4 +21,4 @@ jobs:
         
       - name: Print out "Now deploying branch..."
       - uses: nelonoel/branch-name@v1.0.1
-      - run: echo "Now deploying branch: ${BRANCH_NAME} to the test server"
+      - run: "echo Now deploying branch: ${BRANCH_NAME} to the test server"
