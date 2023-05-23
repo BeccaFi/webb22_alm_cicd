@@ -8,7 +8,8 @@
     "lint-fix": "eslint --fix .",
     "prepare": "husky install",
     "test": "mocha ./test --recursive",
-    "supertest": "mocha ./supertest --recursive --exit"
+    "supertest": "mocha ./supertest --recursive --exit",
+    "coverage": "nyc npm test npm supertest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -17,7 +18,8 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "joi": "^17.9.2",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "nyc": "^15.1.0"
   },
   "devDependencies": {
     "eslint": "^8.40.0",
@@ -26,7 +28,8 @@
     "eslint-plugin-mocha": "^10.1.0",
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "nyc": "^15.1.0"
   },
   "description": "",
   "main": "app.js",
