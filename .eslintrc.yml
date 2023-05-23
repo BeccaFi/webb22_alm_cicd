@@ -6,6 +6,8 @@ env:
 extends: 
   - airbnb-base
   - plugin:mocha/recommended
+  - plugin:prettier/recommended # This has to be the LAST extension in order for prettier to run over eslint rules
+plugins: [prettier]
 overrides:
   - files:
       - test/**/*.js
@@ -19,5 +21,6 @@ rules: {
  "mocha/max-top-level-suites": ["warn", {limit: 2}],
  "import/no-extraneous-dependencies": ["error", {"devDependencies": true}], # Otherwise got the "supertest should be listed in project dependencies, not devDependencies"
  prefer-arrow-callback: off,
- func-names: off
+ func-names: off,
+ prettier/prettier: error
 }

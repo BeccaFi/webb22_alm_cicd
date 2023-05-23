@@ -1,10 +1,11 @@
-const { CalcAdd } = require('../calculator/calcAdd');
-const { calcAddValidation } = require('../validations/calcAddValidation');
+const { CalcAdd } = require("../calculator/calcAdd");
+const { calcAddValidation } = require("../validations/calcAddValidation");
 
 function calcAddCon(req, res) {
   const validation = calcAddValidation(req.query);
 
-  if (validation.error) return res.status(400).json(validation.error.details[0].message);
+  if (validation.error)
+    return res.status(400).json(validation.error.details[0].message);
 
   const val1 = Number(req.query.val1);
   const val2 = Number(req.query.val2);
