@@ -1,4 +1,4 @@
-const joi = require('joi');
+const joi = require("joi");
 
 const schema = joi.object({
   val1: joi.number().required(),

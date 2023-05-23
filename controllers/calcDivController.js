@@ -1,10 +1,11 @@
-const { CalcDiv } = require('../calculator/calcDiv');
-const { calcDivValidation } = require('../validations/calcDivValidation');
+const { CalcDiv } = require("../calculator/calcDiv");
+const { calcDivValidation } = require("../validations/calcDivValidation");
 
 function calcDivCon(req, res) {
   const validation = calcDivValidation(req.query);
 
-  if (validation.error) return res.status(400).json(validation.error.details[0].message);
+  if (validation.error)
+    return res.status(400).json(validation.error.details[0].message);
 
   const val1 = Number(req.query.val1);
   const val2 = Number(req.query.val2);

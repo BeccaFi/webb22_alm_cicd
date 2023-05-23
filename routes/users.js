@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', (req, res) => {
-  res.status(200).json('TB, HA, MA, RF');
+router.get("/", (req, res) => {
+  res.status(200).json("TB, HA, MA, RF");
 });
 
 module.exports = router;
