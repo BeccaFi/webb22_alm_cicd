@@ -1,0 +1,55 @@
+name: Branches and pull requests
+
+on:
+  push:
+    branches-ignore:
+      - main
+  workflow_dispatch:
+
+jobs:
+  
+  mocha_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run mocha unit tests
+        run: npm run test
+
+  supertest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run supertest
+        run: npm run supertest
+
+  run_eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run eslint to check for errors
+        run: npm run lint
+
+  fake_deploy:
+    needs: [mocha_tests, supertest, run_eslint]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7
+
+      - name: Print out "Now deploying branch..."
+        run: |
+          echo "Now deploying branch: ${{ steps.branch-name.outputs.current_branch }} to the test server"
