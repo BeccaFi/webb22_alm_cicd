@@ -4,16 +4,17 @@ on:
   push:
     branches-ignore:
       - main
-      
+  workflow_dispatch:
+
 jobs:
   fake_deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Get branch name
         id: branch-name
         uses: tj-actions/branch-names@v7
-        
+
       - name: Print out "Now deploying branch..."
         run: |
           echo "Now deploying branch: ${{ steps.branch-name.outputs.current_branch }} to the test server"
