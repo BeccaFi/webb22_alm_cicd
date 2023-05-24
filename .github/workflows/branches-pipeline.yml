@@ -55,7 +55,7 @@ jobs:
         run: npm run coverage
 
       - name: Coverage report
-        run: nyc report --reporter=lcov > coverage.lcov
+        run: npx nyc report --reporter=lcov > coverage.lcov
 
       - name: Check coverage threshold
         run: |
