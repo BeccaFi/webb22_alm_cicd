@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  NODE_ENV: development
+
 jobs:
   mocha_tests:
     runs-on: ubuntu-latest

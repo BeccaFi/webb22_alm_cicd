@@ -10,6 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  NODE_ENV: production
 
 jobs:
   mocha_tests:
@@ -48,7 +49,7 @@ jobs:
   Deploy_message_main:
     needs: [mocha_tests, supertest, run_eslint]
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Print out "Now deploying to production"
         run: echo "Now deploying to production"
