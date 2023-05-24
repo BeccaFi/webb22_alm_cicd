@@ -6,7 +6,7 @@
     "start": "node --watch ./bin/www",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "test": "mocha ./test --recursive",
     "supertest": "mocha ./supertest --recursive --exit",
     "coverage": "nyc --reporter=lcov --reporter=text npm test npm supertest"
