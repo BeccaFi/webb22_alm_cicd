@@ -18,9 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Prevent husky
-        run: npm ci --omit=dev --ignore-scripts
-
       - name: Install dependencies
         run: npm install
 
@@ -32,9 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Prevent husky
-        run: npm ci --omit=dev --ignore-scripts
-
       - name: Install dependencies
         run: npm install
 
@@ -45,9 +39,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Prevent husky
-        run: npm ci --omit=dev --ignore-scripts
 
       - name: Install dependencies
         run: npm install
@@ -71,9 +62,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Prevent husky
-        run: npm ci --omit=dev --ignore-scripts
 
       - name: Install dependencies
         run: npm install

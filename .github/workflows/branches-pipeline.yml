@@ -15,9 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Prevent husky # NOTE: REMOVE THIS! Only for testing before merge
-        run: npm ci --omit=dev --ignore-scripts
-
       - name: Install dependencies
         run: npm install
 
