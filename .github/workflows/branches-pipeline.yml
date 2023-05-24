@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  
   mocha_tests:
     runs-on: ubuntu-latest
     steps:
@@ -41,8 +40,39 @@ jobs:
       - name: Run eslint to check for errors
         run: npm run lint
 
-  fake_deploy:
+  Check_coverage:
     needs: [mocha_tests, supertest, run_eslint]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run coverage script
+        run: npm run coverage
+
+      - name: Coverage report
+        run: npx nyc report --reporter=lcov > coverage.lcov
+
+      - name: Check coverage threshold
+        run: |
+          COVERAGE_THRESHOLD=80
+          COVERAGE_STATEMENTS=$(sed -n 's/^Lines.*: *\([0-9]*\.[0-9]*\)%.*$/\1/p' < coverage.lcov)
+          COVERAGE_BRANCHES=$(sed -n 's/^Lines.*: *\([0-9]*\.[0-9]*\)%.*$/\1/p' < coverage.lcov)
+          COVERAGE_FUNCTIONS=$(sed -n 's/^Lines.*: *\([0-9]*\.[0-9]*\)%.*$/\1/p' < coverage.lcov)
+          COVERAGE_LINES=$(sed -n 's/^Lines.*: *\([0-9]*\.[0-9]*\)%.*$/\1/p' < coverage.lcov)
+          if (( $(echo "$COVERAGE_STATEMENTS < $COVERAGE_THRESHOLD" || "$COVERAGE_BRANCHES < $COVERAGE_THRESHOLD" || "$COVERAGE_FUNCTIONS < $COVERAGE_THRESHOLD" || "$COVERAGE_LINES < $COVERAGE_THRESHOLD" | bc -l) )); then
+            echo "Failing pipeline. Coverage is below the threshold ($COVERAGE_THRESHOLD%). Please add missing tests."
+            exit 1
+          else
+            echo "Coverage meets the threshold ($COVERAGE_THRESHOLD%). Proceeding."
+          fi
+
+  fake_deploy:
+    needs: [mocha_tests, supertest, run_eslint, Check_coverage]
     runs-on: ubuntu-latest
 
     steps:
