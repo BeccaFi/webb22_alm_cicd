@@ -19,7 +19,7 @@ jobs:
         run: npm install
 
       - name: Create mocha test report
-        run: npm run test-report
+        run: npm run test-reports
 
       - uses: actions/upload-artifact@v2
         if: success() || failure()
