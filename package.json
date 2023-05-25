@@ -9,7 +9,8 @@
     "prepare": "is-ci || husky install",
     "test": "mocha ./test --recursive",
     "supertest": "mocha ./supertest --recursive --exit",
-    "coverage": "nyc --reporter=lcov --reporter=text npm test npm supertest"
+    "coverage": "nyc --reporter=lcov --reporter=text npm test npm supertest",
+    "test-reports": "mocha --reporter json > test-results.json"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -32,6 +33,7 @@
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "mocha": "^10.2.0",
+    "mocha-junit-reporter": "^2.2.0",
     "nyc": "^15.1.0",
     "prettier": "2.8.8",
     "supertest": "^6.3.3"
